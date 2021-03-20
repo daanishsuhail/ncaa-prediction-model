@@ -20,6 +20,17 @@ Data can be added by
 2. Placing the contents of the extracted data folder into the project data folder
 3. It should have the same directory structure as the current dataless repo with placeholder files.
 
+Directory structure should resemble
+
+ncaa-prediction-model
+                 |
+                 |
+                 |_data
+                        |
+                        |_team_data
+                        |
+                        |_conf_data
+
 References:
 * https://sports.sites.yale.edu/game-team-statistics-nba
 * https://www.pro-football-reference.com/blog/index4837.html?p=3
