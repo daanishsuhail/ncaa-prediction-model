@@ -17,3 +17,4 @@ Creates a basic model for ncaa predictions.
 References:
 * https://sports.sites.yale.edu/game-team-statistics-nba
 * https://www.pro-football-reference.com/blog/index4837.html?p=3
+* All data taken from www.sports-reference.com and www.espn.com
