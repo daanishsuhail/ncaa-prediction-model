@@ -1,5 +1,6 @@
 # REMOVES ALL CSV FILES FROM REPO
 *.csv
+*.zip
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
