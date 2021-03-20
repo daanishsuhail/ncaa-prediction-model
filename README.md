@@ -10,6 +10,9 @@ Creates a basic model for ncaa predictions.
 * fouls?
 * turnover rate
 * turnover differential
+* **Avg. Score Differential**
+* **Strength of Schedule**
+* **Strength of Conference**
 
 References:
 * https://sports.sites.yale.edu/game-team-statistics-nba
