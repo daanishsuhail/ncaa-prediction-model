@@ -8,3 +8,4 @@ import avg_diff
 # USE raw_input() for Python 2.x and input() for Python 3.x
 print("please type in the school code")
 print(avg_diff.difference_average(raw_input(str(str))))
+print("Average Tmm-Opp value^\n\n")
