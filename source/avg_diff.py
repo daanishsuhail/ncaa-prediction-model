@@ -9,7 +9,7 @@ def difference_average(str):
     with open("../data/team_data/"+team+".csv", 'r') as file:
         reader = csv.reader(file)
         abilene_test = list(reader)
-        total_file_rows = len(list(open("../data/team_data/RUTGERS.csv")))
+        total_file_rows = len(list(open("../data/team_data/"+team+".csv")))
         row = 1
         column = 8
         number_of_games = 0
