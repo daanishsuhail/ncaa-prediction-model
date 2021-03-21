@@ -31,6 +31,10 @@ ncaa-prediction-model
                         |
                         |_conf_data
 
+### School Codes
+School Codes found in the [school_codes.md](team_codes.md) file
+
+
 References:
 * https://sports.sites.yale.edu/game-team-statistics-nba
 * https://www.pro-football-reference.com/blog/index4837.html?p=3
