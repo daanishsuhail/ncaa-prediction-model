@@ -1,4 +1,5 @@
 import avg_diff
+import SRS
 import sys
 import os
 import csv
@@ -11,15 +12,19 @@ import csv
 
 # differences - A dictionary set with the key as the teamcode and the value as the average point differential
 
-with open('team_avg_diffs.csv', 'w') as dump:
-    fieldnames = ["Teams", "Avg Point Diff"]
-    writer = csv.DictWriter(dump, fieldnames=fieldnames)
+# REMOVE COMMENTS UNDERNEATH TO DUMP THE AVG DIFF CSV
 
-    writer.writeheader()
-    for filename in os.listdir(os.path.abspath('data/team_data/')):
-        if filename.endswith(".csv"):
-            diff = avg_diff.difference_average(filename)
-            print(diff)
-            writer.writerow({"Teams": filename.split('.')[0], "Avg Point Diff": diff})
-        else:
-            continue
+# with open('data/team_avg_diffs.csv', 'w') as dump:
+#     fieldnames = ["Teams", "Avg Point Diff"]
+#     writer = csv.DictWriter(dump, fieldnames=fieldnames)
+
+#     writer.writeheader()
+#     for filename in os.listdir(os.path.abspath('data/team_data/')):
+#         if filename.endswith(".csv"):
+#             diff = avg_diff.difference_average(filename)
+#             print(diff)
+#             writer.writerow({"Teams": filename.split('.')[0], "Avg Point Diff": diff})
+#         else:
+#             continue
+
+SRS.SRS('data/team_avg_diffs.csv', "ABILENECHRISTIAN")
