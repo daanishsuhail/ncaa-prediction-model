@@ -23,7 +23,7 @@ ncaa-prediction-model
 School Codes found in the [school_codes.md](team_codes.md) file
 
 ### Team Average Point Differentials CSV
-Apon running the main file with proper csv files of each team, a "team_avg_diffs.csv" file will appear in the main project directory. This will then be fed through "SRS.py" where each average point margin will balance eachother out in a matrix-type solution. (Credit to sports-reference.com for the formula)
+Apon running the main file with proper csv files of each team, a "team_avg_diffs.csv" file will appear in the main project directory. This will then be fed through "SRS.py" where each average point margin will balance eachother out in a matrix-type solution. (Credit to [sports-reference.com](https://www.pro-football-reference.com/blog/index4837.html?p=3) for the formula)
 
 References:
 * https://sports.sites.yale.edu/game-team-statistics-nba
