@@ -24,4 +24,5 @@ def difference_average(str):
             if row == total_file_rows:
                 # print(point_diff) REMOVE THE COMMENTS TO SEE THE TOTALED POINT DIFFERENCES
                 avg_point_diff = float(point_diff)/(row-1)
-                print(avg_point_diff) # PRINTS THE AVERAGE POINT DIFFERENCE
+                # print(avg_point_diff) 
+                return avg_point_diff
