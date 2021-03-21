@@ -2,6 +2,7 @@ import avg_diff
 import sys
 import os
 import csv
+import platform
 
 # this is the master file where all functions are going to be run.
 # do as little work as possible on this file, we'll can call them by classes later.
@@ -14,9 +15,12 @@ import csv
 with open('team_avg_diffs.csv', 'w') as dump:
     fieldnames = ["Teams", "Avg Point Diff"]
     writer = csv.DictWriter(dump, fieldnames=fieldnames)
-
+    linux_stringa = ''
+    linux_stringb = ''
+    if platform.system() == 'Linux':
+        linux_stringa = '../'
     writer.writeheader()
-    for filename in os.listdir(os.path.abspath('data/team_data/')):
+    for filename in os.listdir(os.path.abspath(linux_stringa+'data/team_data/')):
         if filename.endswith(".csv"):
             diff = avg_diff.difference_average(filename)
             print(diff)

@@ -1,4 +1,5 @@
 import csv
+import platform
 from os import path
 
 
@@ -7,10 +8,15 @@ from os import path
 def difference_average(str):
     # print("opening csv file") REMOVE COMMENTS TO ENABLE SEEING THE "open csv file" MEANT FOR DEBUGGING
     team = str; 
-    with open(path.abspath('data/team_data/'+team), 'r') as file:
+    linux_stringa = ''
+    linux_stringb = ''
+    if platform.system() == 'Linux':
+        linux_stringa = '..'
+        # linux_stringb = '.csv'
+    with open(path.abspath(linux_stringa+'/data/team_data/'+team+linux_stringb), 'r') as file:
         reader = csv.reader(file)
         abilene_test = list(reader)
-        total_file_rows = len(list(open(path.abspath('data/team_data/'+team))))
+        total_file_rows = len(list(open(path.abspath(linux_stringa+'/data/team_data/'+team+linux_stringb))))
         row = 1
         column = 8
         number_of_games = 0
