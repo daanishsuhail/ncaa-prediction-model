@@ -14,6 +14,8 @@ import csv
 
 # REMOVE COMMENTS UNDERNEATH TO DUMP THE AVG DIFF CSV
 
+# Change
+
 # with open('data/team_avg_diffs.csv', 'w') as dump:
 #     fieldnames = ["Teams", "Avg Point Diff"]
 #     writer = csv.DictWriter(dump, fieldnames=fieldnames)
