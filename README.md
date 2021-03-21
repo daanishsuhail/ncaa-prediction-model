@@ -2,17 +2,8 @@
 ---
 Creates a basic model for ncaa predictions.
 
-### Potential Statistics
-* Score
-* W/L
-* Rebounds
-* Free throws
-* fouls?
-* turnover rate
-* turnover differential
-* **Avg. Score Differential**
-* **Strength of Schedule**
-* **Strength of Conference**
+### CSV Dump
+Apon running the main file with proper csv files of each team, a "team_avg_diffs.csv" file will appear in the main project directory. This will then be fed through "SRS.py" where each average point margin will balance eachother out in a matrix-type solution. (Credit to sports-reference.com for the formula)
 
 ### Adding Data
 Data can be added by
