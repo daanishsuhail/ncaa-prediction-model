@@ -1,0 +1,4 @@
+### INSTRUCTIONS
+-------------------
+1. Go into the source directory
+2. Run main.py (on unix, 'python main.py')
