@@ -33,10 +33,18 @@ import platform
 #         else:
 #             continue
 
+def dumpCSV(filepath, dict, fieldnames):
+    with open(filepath, 'w') as dump:
+        writer = csv.DictWriter(dump, fieldnames=fieldnames)
+        writer.writeheader()
+        for k, v in dict.items():
+            writer.writerow({fieldnames[0]: k, fieldnames[1]: v})
+
 def SRSmain(avg_team_diffs, conf_spread, conf_summary):
     atd = SRS.csvToDict(avg_team_diffs, "Teams", "Avg Point Diff")
     confSpread = SRS.csvToDict(conf_spread, "Team", "Conference")
     confProp = SRS.mergeListsAsDict(SRS.parseCSV(conf_summary, 1, 1), SRS.parseCSV(conf_summary, 9, 1))
-    SRS.calcSRS(atd)
+    SRSs = SRS.calcSRS(atd, confSpread, confProp, 2000)
+    dumpCSV('data/SRSs.csv', SRSs, ["Teams", "SRS"])
 
 SRSmain('data/team_avg_diffs.csv', 'data/conf_data/ncaa-conf-spread.csv', 'data/conf_data/conf_summary.csv')
