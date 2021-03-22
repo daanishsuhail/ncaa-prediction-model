@@ -7,16 +7,34 @@ import csv
 
 def calcSRS(atdDict):
     d = dict()
-    for k, v in atdDict:
-        
     return d
 
-
-def SRS(avg_team_diffs):
-    atd = open(avg_team_diffs, mode='r')
-    reader = csv.DictReader(atd)
+# This only works for CSVs structured like a dictionary. Essentially, they can only have two headers:
+# One that functions like a key, and one that functions like the value w/ the key provided
+def csvToDict(csvPath, keyHeader, valHeader):
+    c = open(csvPath, mode='r')
+    reader = csv.DictReader(c)
     l = list(reader)
-    atdDict = dict()
-    for d in l:
-        avg_diffs[d["Teams"]] = d["Avg Point Diff"]
-    
+    d = dict()
+    for d1 in l:
+        d[d1[keyHeader]] = d1[valHeader]
+    return d
+
+def mergeListsAsDict(keys, vals):
+    d = dict()
+    if len(keys) == len(vals):
+        for k in keys:
+            d[k] = vals[keys.index(k)]
+    return d
+
+# This function returns an entire column as a list.
+def parseCSV(csvPath, colNum, rowStart):
+    l = list()
+    file = open(csvPath, mode='r')
+    reader = csv.reader(file)
+    parsed = list(reader)
+    rows = len(list(open(csvPath)))
+    print(rows)
+    for r in range(rowStart, rows):
+        l.append(parsed[r][colNum])
+    return l
