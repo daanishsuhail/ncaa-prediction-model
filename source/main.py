@@ -4,6 +4,7 @@ import sys
 import os
 import csv
 import platform
+import findAllOpponents
 import re
 from sportsipy.ncaab import conferences
 from sportsipy.ncaab import teams
@@ -120,21 +121,18 @@ def parseCSV(csvPath, colNum, rowStart):
 conference_weight = {}
 scores = {}
 for c, d in Conferences.conferences.items():
-    print(c+":")
+    print(c)
     confWeight = 0
     teams = 0
     for teamabb in d["teams"]:
-        print("        "+teamabb+'\n            = '+str(Teams.__getitem__(teamabb).simple_rating_system)+'')
         teams += 1
         try: confWeight += Teams.__getitem__(teamabb).simple_rating_system
         except TypeError: continue
     confWeight /= teams
-    print("weight:"+str(confWeight)+'\n')
     conference_weight[c] = confWeight
         
 
 for team in Teams:
-    print(team.conference)
     confWeight = conference_weight[team.conference]
     try: scores[team.name] = (team.simple_rating_system + team.strength_of_schedule)*(confWeight)/2
     except TypeError: scores[team.name] = 0
