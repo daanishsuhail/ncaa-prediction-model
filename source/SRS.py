@@ -62,4 +62,7 @@ def __calcSRS(marginDict, rDict):
     
     return newDict
 
+def calcSRS(atdDict):
+    d = dict()
+    return d
 
