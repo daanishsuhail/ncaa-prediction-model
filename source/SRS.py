@@ -6,19 +6,37 @@ import csv
 
 def calcSRS(atdDict, confSpread, confProp, iterations):
     # STRUCTURE:
-    
+    # this recursive calculation is split in two parts:
+    # 1) the merge between the conference weight
+    # 2) the recursive calculation of:
+    #       - constant: team's average point differential
+    #       - variable: the average of every other team's rating
+    #    the final result of one iteration is the constant minus the variable.
+    #    this means that the variable will rapidly approach the final calculation, where the constant will not change
+    # after "iterations" number of iterations, the absolute result is returned.
+
+    # if this explanation is not clear enough, do not hesitate to ask questions.
+    # it is not recommended that you change anything in any of these functions without full knowledge over how the code was written.
+
     if (iterations > 0):
-        # i = the dictionary of teams with their avg. point diff * their respective confProp
-        oldest = {}
-        # Loop through teams (conf)
-        for t in atdDict:
-            atd = atdDict[t]
-            conR = confProp[confSpread[t]]
-            oldest[t] = float(atd) * float(conR)/64
-        
         z = 0
-        old = {}
+        # the purpose of old and new
+        # old and new are what allow the recursion to process correctly.
+        oldest = {}
+
+        for t in atdDict:
+            # atd = the average point differential for team "t"
+            atd = atdDict[t]
+            # conR = conference ratio of team "t"
+            conR = confProp[confSpread[t]]
+            oldest[t] = (float(atd) * float(conR))/64
+        
+        # old = the old dictionary of variable ratings
+        old = oldest
+        # new = the new dictionary of variable ratings
         new = {}
+
+        # 
         while z < iterations-1:
             new = __calcSRS(oldest, old)
             old = new
@@ -26,6 +44,8 @@ def calcSRS(atdDict, confSpread, confProp, iterations):
 
         return old
     else:
+        # incase we just want the actual average point differentials of each team instead, just set iterations to zero.
+        # then it will return what was inputted into the function in the first place.
         return atdDict
 
 def __calcSRS(marginDict, rDict):
@@ -36,38 +56,10 @@ def __calcSRS(marginDict, rDict):
         TOTAL = 0
         for t1, r1 in rDict.items():
             if t1 != t:
-                TOTAL += r1
-        avg = TOTAL/((len(rDict))-1)
-        newDict[t] = r-avg
+                TOTAL += float(r1)
+        avg = TOTAL/((len(marginDict))-1)
+        newDict[t] = r+avg
     
     return newDict
 
 
-# This only works for CSVs structured like a dictionary. Essentially, they can only have two headers:
-# One that functions like a key, and one that functions like the value w/ the key provided
-def csvToDict(csvPath, keyHeader, valHeader):
-    c = open(csvPath, mode='r')
-    reader = csv.DictReader(c)
-    l = list(reader)
-    d = dict()
-    for d1 in l:
-        d[d1[keyHeader]] = d1[valHeader]
-    return d
-
-def mergeListsAsDict(keys, vals):
-    d = dict()
-    if len(keys) == len(vals):
-        for k in keys:
-            d[k] = vals[keys.index(k)]
-    return d
-
-# This function returns an entire column as a list.
-def parseCSV(csvPath, colNum, rowStart):
-    l = list()
-    file = open(csvPath, mode='r')
-    reader = csv.reader(file)
-    parsed = list(reader)
-    rows = len(list(open(csvPath)))
-    for r in range(rowStart, rows):
-        l.append(parsed[r][colNum])
-    return l
